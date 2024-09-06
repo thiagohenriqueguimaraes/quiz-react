@@ -2,17 +2,13 @@ import React, { useState } from 'react';
 
 import { candidatos } from './source';
 
-const shuffleArray = (array) => {
-  return array.sort(() => Math.random() - 0.5);
-};
-
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [votes, setVotes] = useState({});
-  const [quizFinished, setQuizFinished] = useState(false);
+  const [quizFinished, setQuizFinished] = useState(false); // Adicionado para controlar o estado do fim do quiz
 
-  const areas = [...new Set(candidatos.map(c => c.area))];
+  const areas = [...new Set(candidatos.map(c => c.area))]; // Pega todas as áreas únicas
   const propostasPorArea = candidatos.filter(c => c.area === areas[currentQuestion]);
 
   const handleNext = () => {
@@ -23,7 +19,7 @@ const Quiz = () => {
         [candidato]: (votes[candidato] || 0) + 1
       });
       setCurrentQuestion(currentQuestion + 1);
-      setSelectedAnswer(null);
+      setSelectedAnswer(null); // Resetar a resposta
     }
   };
 
@@ -34,25 +30,19 @@ const Quiz = () => {
         ...votes,
         [candidato]: (votes[candidato] || 0) + 1
       });
-      setQuizFinished(true);
+      setQuizFinished(true); // Finalizar o quiz
     }
   };
 
-  const getMostVotedCandidate = () => {
-    const maxVotes = Math.max(...Object.values(votes));
-    return Object.entries(votes).find(([candidato, votoCount]) => votoCount === maxVotes);
-  };
-
   if (quizFinished) {
-    const [mostVotedCandidate] = getMostVotedCandidate() || [];
     return (
       <div>
         <h3>Resultado final:</h3>
-        {mostVotedCandidate ? (
-          <p>O candidato mais votado é <strong>{mostVotedCandidate[0]}</strong> com <strong>{mostVotedCandidate[1]}</strong> votos.</p>
-        ) : (
-          <p>Nenhum candidato recebeu votos.</p>
-        )}
+        <ul>
+          {Object.entries(votes).map(([candidato, votoCount]) => (
+            <li key={candidato}>{candidato}: {votoCount} votos</li>
+          ))}
+        </ul>
       </div>
     );
   }
@@ -62,7 +52,7 @@ const Quiz = () => {
       <h2>Questão {currentQuestion + 1}: {areas[currentQuestion]}</h2>
       <p>Selecione a proposta para <strong>{areas[currentQuestion]}</strong>:</p>
       <ul>
-        {shuffleArray(propostasPorArea).map((item, index) => (
+        {propostasPorArea.map((item, index) => (
           <li key={index}>
             <label>
               <input 
