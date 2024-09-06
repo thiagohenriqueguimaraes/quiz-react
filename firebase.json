@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "quiz-candidato-ideal",
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
