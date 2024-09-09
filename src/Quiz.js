@@ -80,6 +80,7 @@ const Quiz = () => {
     <Question 
       questionNumber={currentQuestion}
       area={areas[currentQuestion]}
+      totalQuestions={areas.length}
       propostas={shuffledPropostas}
       onAnswer={handleAnswer}
     />

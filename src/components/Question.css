@@ -1,0 +1,21 @@
+/* Question.css */
+
+.progress-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dot.active {
+    background-color: #4caf50; /* Cor para pontos ativos */
+  }
+  
