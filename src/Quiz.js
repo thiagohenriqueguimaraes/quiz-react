@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { candidatos } from './source';
+import StartScreen from './components/StartScreen';
+import Question from './components/Question';
+import ResultScreen from './components/ResultScreen';
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [votes, setVotes] = useState({});
   const [quizFinished, setQuizFinished] = useState(false);
-  const [quizStarted, setQuizStarted] = useState(false); // Novo estado para controlar início do quiz
+  const [quizStarted, setQuizStarted] = useState(false); // Estado para controlar início do quiz
   const [resultText, setResultText] = useState('');
   const [resultImage, setResultImage] = useState('');
 
@@ -14,7 +17,6 @@ const Quiz = () => {
 
   // Função para embaralhar as opções
   const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
-
   const shuffledPropostas = shuffleArray([...propostasPorArea]);
 
   const handleAnswer = (proposta) => {
@@ -60,45 +62,27 @@ const Quiz = () => {
   };
 
   if (!quizStarted) {
-    return (
-      <div style={{ textAlign: 'center', marginTop: '50px' }}>
-        <h2>Escolha as principais propostas dos candidatos à prefeitura de São Paulo</h2>
-        <button onClick={handleStartQuiz} style={{ padding: '10px 20px', fontSize: '18px', marginTop: '20px' }}>Começar</button>
-      </div>
-    );
+    return <StartScreen onStart={handleStartQuiz} />;
   }
+
   if (quizFinished) {
     return (
-      <div>
-        <h3>O seu candidato é:</h3>
-        <img src={resultImage} alt={`Foto do candidato`} style={{ display: 'block', margin: 'auto' }} />
-        <button onClick={handleReset} style={{ display: 'block', margin: '20px auto' }}>Reiniciar Quiz</button>
-        <button onClick={handleWhatsAppShare} style={{ display: 'block', margin: '10px auto' }}>Compartilhar no WhatsApp</button>
-      </div>
+      <ResultScreen 
+        resultText={resultText}
+        resultImage={resultImage}
+        onReset={handleReset}
+        onShare={handleWhatsAppShare}
+      />
     );
   }
 
   return (
-    <div>
-      <h2>Questão {currentQuestion + 1}: {areas[currentQuestion]}</h2>
-      <p>Selecione a proposta para <strong>{areas[currentQuestion]}</strong>:</p>
-      <ul style={{ listStyleType: 'none', padding: 0 }}>
-        {shuffledPropostas.map((item, index) => (
-          <li key={index} style={{ textAlign: 'left', marginLeft: '20px', marginBottom: '20px' }}>
-            <label>
-              <input 
-                type="radio" 
-                name="proposta" 
-                value={item.proposta} 
-                checked={false} 
-                onChange={() => handleAnswer(item.proposta)} 
-              />
-              {item.proposta}
-            </label>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Question 
+      questionNumber={currentQuestion}
+      area={areas[currentQuestion]}
+      propostas={shuffledPropostas}
+      onAnswer={handleAnswer}
+    />
   );
 };
 
