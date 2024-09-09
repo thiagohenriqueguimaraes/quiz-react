@@ -33,6 +33,12 @@ const Quiz = () => {
       setResultText(`Confira o candidato que mais combina comigo: ${winner}!`);
       setResultImage(winnerImagePath);
       setQuizFinished(true);
+      // Tagueamento GA4
+      window.gtag('event', 'quiz_finished', {
+        event_category: 'quiz',
+        event_label: winner,
+        value: votes[winner]
+      });
     }
   };
 
@@ -52,7 +58,7 @@ const Quiz = () => {
   const handleStartQuiz = () => {
     setQuizStarted(true); // Começar o quiz
   };
-  
+
   if (!quizStarted) {
     return (
       <div style={{ textAlign: 'center', marginTop: '50px' }}>
