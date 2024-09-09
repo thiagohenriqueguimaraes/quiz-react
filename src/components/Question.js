@@ -20,16 +20,21 @@ const Question = ({ questionNumber, totalQuestions, area, propostas, onAnswer })
       <p>Selecione a proposta para <strong>{area}</strong>:</p>
       <ul style={{ listStyleType: 'none', padding: 0 }}>
         {propostas.map((item, index) => (
-          <li key={index} style={{ textAlign: 'left', marginLeft: '20px', marginBottom: '20px' }}>
-            <label>
-              <input 
-                type="radio" 
-                name="proposta" 
-                value={undefined} 
-                onChange={() => onAnswer(item.proposta)} 
-              />
-              {item.proposta}
-            </label>
+          <li 
+            key={index} 
+            style={{ 
+              textAlign: 'left', 
+              marginLeft: '20px', 
+              marginBottom: '20px', 
+              padding: '10px', 
+              border: '1px solid #ccc', 
+              borderRadius: '5px', 
+              cursor: 'pointer',
+              backgroundColor: '#282c34'
+            }}
+            onClick={() => onAnswer(item.proposta)}  // Evento de clique para selecionar a proposta
+          >
+            {item.proposta}
           </li>
         ))}
       </ul>
