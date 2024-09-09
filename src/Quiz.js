@@ -70,7 +70,7 @@ const Quiz = () => {
       <p>Selecione a proposta para <strong>{areas[currentQuestion]}</strong>:</p>
       <ul style={{ listStyleType: 'none', padding: 0 }}>
         {shuffledPropostas.map((item, index) => (
-          <li key={index} style={{ textAlign: 'left', marginLeft: '20px' }}>
+          <li key={index} style={{ textAlign: 'left', marginLeft: '20px', marginBottom: '20px'}}>
             <label>
               <input 
                 type="radio" 
