@@ -5,19 +5,15 @@ const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [votes, setVotes] = useState({});
   const [quizFinished, setQuizFinished] = useState(false);
+  const [quizStarted, setQuizStarted] = useState(false); // Novo estado para controlar início do quiz
   const [resultText, setResultText] = useState('');
   const [resultImage, setResultImage] = useState('');
 
   const areas = [...new Set(candidatos.map(c => c.area))];
   const propostasPorArea = candidatos.filter(c => c.area === areas[currentQuestion]);
 
-  const shuffleArray = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  };
+  // Função para embaralhar as opções
+  const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
 
   const shuffledPropostas = shuffleArray([...propostasPorArea]);
 
@@ -53,6 +49,18 @@ const Quiz = () => {
     window.open(whatsappUrl, '_blank');
   };
 
+  const handleStartQuiz = () => {
+    setQuizStarted(true); // Começar o quiz
+  };
+  
+  if (!quizStarted) {
+    return (
+      <div style={{ textAlign: 'center', marginTop: '50px' }}>
+        <h2>Escolha as principais propostas dos candidatos à prefeitura de São Paulo</h2>
+        <button onClick={handleStartQuiz} style={{ padding: '10px 20px', fontSize: '18px', marginTop: '20px' }}>Começar</button>
+      </div>
+    );
+  }
   if (quizFinished) {
     return (
       <div>
@@ -70,7 +78,7 @@ const Quiz = () => {
       <p>Selecione a proposta para <strong>{areas[currentQuestion]}</strong>:</p>
       <ul style={{ listStyleType: 'none', padding: 0 }}>
         {shuffledPropostas.map((item, index) => (
-          <li key={index} style={{ textAlign: 'left', marginLeft: '20px', marginBottom: '20px'}}>
+          <li key={index} style={{ textAlign: 'left', marginLeft: '20px', marginBottom: '20px' }}>
             <label>
               <input 
                 type="radio" 
