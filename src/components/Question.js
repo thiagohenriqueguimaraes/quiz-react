@@ -11,27 +11,19 @@ const Question = ({ questionNumber, totalQuestions, area, propostas, onAnswer })
   ));
 
   return (
-    <div>
+    <div className="question-container">
       {/* Barra de progresso com pontos */}
       <div className="progress-bar">
         {progressDots}
       </div>
 
-      <p>Selecione a proposta para <strong>{area}</strong>:</p>
-      <ul style={{ listStyleType: 'none', padding: 0 }}>
+      <p className="question-area">Selecione a proposta para <strong>{area}</strong>:</p>
+
+      <ul className="proposals-list">
         {propostas.map((item, index) => (
           <li 
             key={index} 
-            style={{ 
-              textAlign: 'left', 
-              marginLeft: '20px', 
-              marginBottom: '20px', 
-              padding: '10px', 
-              border: '1px solid #ccc', 
-              borderRadius: '5px', 
-              cursor: 'pointer',
-              backgroundColor: '#282c34'
-            }}
+            className="proposal-item"
             onClick={() => onAnswer(item.proposta)}  // Evento de clique para selecionar a proposta
           >
             {item.proposta}

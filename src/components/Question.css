@@ -1,21 +1,78 @@
-/* Question.css */
+/* Estilos gerais para a tela de perguntas */
+.question-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  background-color: #282c34;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.question-area {
+  font-size: 1.2em;
+  text-align: center;
+  margin-bottom: 20px;
+}
 
 .progress-bar {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #bbb;
+  margin: 0 5px;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #61dafb;
+}
+
+.proposals-list {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.proposal-item {
+  background-color: #444;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1em;
+}
+
+/* Efeito hover para dispositivos com mouse */
+@media (hover: hover) {
+  .proposal-item:hover {
+    background-color: #61dafb;
+    transform: translateY(-2px);
   }
-  
+}
+
+@media (max-width: 600px) {
+  .proposal-item {
+    font-size: 0.9em;
+    padding: 12px;
+  }
+
   .dot {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: #ccc;
-    margin: 0 5px;
-    transition: background-color 0.3s ease;
+    width: 10px;
+    height: 10px;
   }
-  
-  .dot.active {
-    background-color: #4caf50; /* Cor para pontos ativos */
+
+  .question-area {
+    font-size: 1em;
   }
-  
+}
