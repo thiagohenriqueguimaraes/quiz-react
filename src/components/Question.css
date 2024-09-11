@@ -7,12 +7,12 @@
   font-family: 'Arial', sans-serif;
   color: #fff;
   background-color: #282c34;
-  height: 100vh;
+  height: 100%;
   box-sizing: border-box;
 }
 
 .question-image {
-  max-width: 100%;
+  max-width: 30%;
   height: auto;
   margin-bottom: 20px;
 }
