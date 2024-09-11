@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaWhatsapp, FaFacebook } from 'react-icons/fa';
 import './variables.css';  // Importando variáveis
+import './ResultScreen.css';
 
 const ResultScreen = ({ resultText, resultImage, onReset, onShare }) => {
 
@@ -20,8 +21,8 @@ const ResultScreen = ({ resultText, resultImage, onReset, onShare }) => {
 
   return (
     <div>
-      <h3>O seu candidato é:</h3>
-      <img src={resultImage} alt="Foto do candidato" style={{ display: 'block', margin: 'auto' }} />
+      <h3 className='result-text'>O seu candidato é:</h3>
+      <img src={resultImage} alt="Foto do candidato" className='result-image' style={{ display: 'block', margin: 'auto' }} />
       <p>{resultText}</p>
       
       <button 

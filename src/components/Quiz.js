@@ -31,7 +31,7 @@ const Quiz = () => {
       setCurrentQuestion(nextQuestion);
     } else {
       const winner = Object.entries(votes).reduce((a, b) => a[1] > b[1] ? a : b)[0];
-      const winnerImagePath = `/assets/${winner}.webp`;
+      const winnerImagePath = `/assets/candidates/${winner}.webp`;
       setResultText(`Confira o candidato que mais combina comigo: ${winner}!`);
       setResultImage(winnerImagePath);
       setQuizFinished(true);
