@@ -1,0 +1,17 @@
+.result-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Estilos para dispositivos móveis */
+  @media (max-width: 600px) {
+    .result-image {
+      max-width: 50%; /* Reduz o tamanho da imagem para 50% em telas pequenas */
+    }
+    .result-text {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+  }  

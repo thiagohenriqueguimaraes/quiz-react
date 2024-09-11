@@ -81,4 +81,8 @@
   .question-area {
     font-size: 1em;
   }
+
+  .question-image {
+    max-width: 50%;
+  }
 }
