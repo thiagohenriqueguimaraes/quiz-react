@@ -33,7 +33,7 @@
 }
 
 .dot.active {
-  background-color: #61dafb;
+  background-color: #7261fb;
 }
 
 .proposals-list {
@@ -56,7 +56,7 @@
 /* Efeito hover para dispositivos com mouse */
 @media (hover: hover) {
   .proposal-item:hover {
-    background-color: #61dafb;
+    background-color: #7261fb;
     transform: translateY(-2px);
   }
 }

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { candidatos } from './source';
-import StartScreen from './components/StartScreen';
-import Question from './components/Question';
-import ResultScreen from './components/ResultScreen';
+import { candidatos } from '../source';
+import StartScreen from './StartScreen';
+import Question from './Question';
+import ResultScreen from './ResultScreen';
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
