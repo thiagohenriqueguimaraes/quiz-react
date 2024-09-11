@@ -11,6 +11,12 @@
   box-sizing: border-box;
 }
 
+.question-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
 .question-area {
   font-size: 1.2em;
   text-align: center;
