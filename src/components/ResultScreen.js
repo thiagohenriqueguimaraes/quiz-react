@@ -13,7 +13,8 @@ const ResultScreen = ({ resultText, resultImage, onReset, onShare }) => {
   };
 
   const handleWhatsAppShare = () => {
-    const message = `${resultText}. Faça o quiz você também!`;
+    const quizUrl = 'https://quiz-candidato-ideal.web.app/';
+    const message = `${resultText}. Faça o quiz você também! ${quizUrl}`;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     window.gtag('event', 'quiz_results_shared_whatsapp'); // Tagueamento para o resultado
